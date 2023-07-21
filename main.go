@@ -40,7 +40,7 @@ func main() {
 	router.HandleFunc("/users/{id}", updateUser(db)).Methods("PUT")
 	router.HandleFunc("/users/{id}", deleteUser(db)).Methods("DELETE")
 
-	//start server
+	// start server
 	log.Fatal(http.ListenAndServe(":8000", jsonContentTypeMiddleware(router)))
 }
 
@@ -50,6 +50,7 @@ func jsonContentTypeMiddleware(next http.Handler) http.Handler {
 		next.ServeHTTP(w, r)
 	})
 }
+
 
 // get all users
 func getUsers(db *sql.DB) http.HandlerFunc {
